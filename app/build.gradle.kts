@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("plugin.serialization") version "2.0.20"
 }
 
 android {
@@ -10,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.embertechnicaltest"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -58,7 +59,13 @@ dependencies {
 
     implementation(libs.ktor.android)
     implementation(libs.ktor.json)
+    implementation(libs.ktor.content.negotiation)
     implementation(libs.ktor.serialisation)
     implementation(libs.kotlin.coroutine)
     implementation(libs.koin)
+    implementation(libs.koin.compose)
+
+    testImplementation(libs.mockk.android)
+    testImplementation(libs.mockk.agent)
+    testImplementation(libs.kotlin.coroutine.test)
 }
